@@ -1,0 +1,45 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  firstname        String
+  lastname String
+  email       String  @unique
+  // project UserProject[]
+}
+
+model Project {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  projectName        String
+  description String
+  financement       String 
+  // author UserProject[]
+}
+
+
+// model UserProject {
+//   user       User     @relation(fields: [userId], references: [id])
+//   userId     Int 
+//   project   Project @relation(fields: [projectId], references: [id])
+//   projectId Int 
+//   assignedAt DateTime @default(now())
+//   assignedBy String
+
+//   @@id([userId, projectId])
+// }
