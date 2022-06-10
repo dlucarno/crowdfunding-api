@@ -7,6 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     cors: true,
   });
+  app.enableCors();
   const config = new DocumentBuilder()
     .setTitle('Project API')
     .setDescription('API pour le projet de crowfounding')

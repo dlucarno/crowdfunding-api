@@ -7,6 +7,7 @@ async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule, {
         cors: true,
     });
+    app.enableCors();
     const config = new swagger_1.DocumentBuilder()
         .setTitle('Project API')
         .setDescription('API pour le projet de crowfounding')
