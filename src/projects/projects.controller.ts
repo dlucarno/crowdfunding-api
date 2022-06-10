@@ -3,14 +3,14 @@ import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
 import { ApiTags } from '@nestjs/swagger';
-
+import { User } from '@prisma/client';
 
 
 @Controller('projects')
 @ApiTags('projects')
 export class ProjectsController {
   constructor(private projectsService: ProjectsService) {}
-  
+  user : User
 
   @Post()
   create(@Body()  createProjectDto: CreateProjectDto) {
