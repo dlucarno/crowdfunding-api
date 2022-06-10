@@ -16,8 +16,9 @@ let ProjectsService = class ProjectsService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    create(createProjectDto) {
-        return this.prisma.project.create({ data: createProjectDto });
+    create(project) {
+        return this.prisma.project.create({ data: project,
+        });
     }
     findAll() {
         return this.prisma.project.findMany();

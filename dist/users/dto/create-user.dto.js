@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserDto = void 0;
 const swagger_1 = require("@nestjs/swagger");
+const create_project_dto_1 = require("../../projects/dto/create-project.dto");
 class CreateUserDto {
 }
 __decorate([

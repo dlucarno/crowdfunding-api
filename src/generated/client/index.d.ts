@@ -210,7 +210,7 @@ export namespace Prisma {
 
   /**
    * Prisma Client JS version: 2.30.3
-   * Query Engine version: b8c35d44de987a9691890b3ddf3e2e7effb9bf20
+   * Query Engine version: 2b0c12756921c891fec4f68d9444e18c7d5d4a6a
    */
   export type PrismaVersion = {
     client: string
@@ -718,15 +718,10 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
-    avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
-    sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
-    min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
-    max: UserMaxAggregateOutputType | null
   }
 
   export type UserAvgAggregateOutputType = {
@@ -814,7 +809,7 @@ export namespace Prisma {
      * Determine the order of Users to fetch.
      * 
     **/
-    orderBy?: Enumerable<UserOrderByInput>
+    orderBy?: Enumerable<UserOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -843,19 +838,11 @@ export namespace Prisma {
     **/
     _count?: true | UserCountAggregateInputType
     /**
-     * @deprecated since 2.23.0 please use `_count`
-    **/
-    count?: true | UserCountAggregateInputType
-    /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
     _avg?: UserAvgAggregateInputType
-    /**
-     * @deprecated since 2.23.0 please use `_avg`
-    **/
-    avg?: UserAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
@@ -863,29 +850,17 @@ export namespace Prisma {
     **/
     _sum?: UserSumAggregateInputType
     /**
-     * @deprecated since 2.23.0 please use `_sum`
-    **/
-    sum?: UserSumAggregateInputType
-    /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
     /**
-     * @deprecated since 2.23.0 please use `_min`
-    **/
-    min?: UserMinAggregateInputType
-    /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
     _max?: UserMaxAggregateInputType
-    /**
-     * @deprecated since 2.23.0 please use `_max`
-    **/
-    max?: UserMaxAggregateInputType
   }
 
   export type GetUserAggregateType<T extends UserAggregateArgs> = {
@@ -901,7 +876,7 @@ export namespace Prisma {
     
   export type UserGroupByArgs = {
     where?: UserWhereInput
-    orderBy?: Enumerable<UserOrderByInput>
+    orderBy?: Enumerable<UserOrderByWithAggregationInput>
     by: Array<UserScalarFieldEnum>
     having?: UserScalarWhereWithAggregatesInput
     take?: number
@@ -1378,7 +1353,7 @@ export namespace Prisma {
      * Determine the order of Users to fetch.
      * 
     **/
-    orderBy?: Enumerable<UserOrderByInput>
+    orderBy?: Enumerable<UserOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -1430,7 +1405,7 @@ export namespace Prisma {
      * Determine the order of Users to fetch.
      * 
     **/
-    orderBy?: Enumerable<UserOrderByInput>
+    orderBy?: Enumerable<UserOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -1585,15 +1560,10 @@ export namespace Prisma {
 
   export type AggregateProject = {
     _count: ProjectCountAggregateOutputType | null
-    count: ProjectCountAggregateOutputType | null
     _avg: ProjectAvgAggregateOutputType | null
-    avg: ProjectAvgAggregateOutputType | null
     _sum: ProjectSumAggregateOutputType | null
-    sum: ProjectSumAggregateOutputType | null
     _min: ProjectMinAggregateOutputType | null
-    min: ProjectMinAggregateOutputType | null
     _max: ProjectMaxAggregateOutputType | null
-    max: ProjectMaxAggregateOutputType | null
   }
 
   export type ProjectAvgAggregateOutputType = {
@@ -1681,7 +1651,7 @@ export namespace Prisma {
      * Determine the order of Projects to fetch.
      * 
     **/
-    orderBy?: Enumerable<ProjectOrderByInput>
+    orderBy?: Enumerable<ProjectOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -1710,19 +1680,11 @@ export namespace Prisma {
     **/
     _count?: true | ProjectCountAggregateInputType
     /**
-     * @deprecated since 2.23.0 please use `_count`
-    **/
-    count?: true | ProjectCountAggregateInputType
-    /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to average
     **/
     _avg?: ProjectAvgAggregateInputType
-    /**
-     * @deprecated since 2.23.0 please use `_avg`
-    **/
-    avg?: ProjectAvgAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
@@ -1730,29 +1692,17 @@ export namespace Prisma {
     **/
     _sum?: ProjectSumAggregateInputType
     /**
-     * @deprecated since 2.23.0 please use `_sum`
-    **/
-    sum?: ProjectSumAggregateInputType
-    /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
     _min?: ProjectMinAggregateInputType
     /**
-     * @deprecated since 2.23.0 please use `_min`
-    **/
-    min?: ProjectMinAggregateInputType
-    /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
     _max?: ProjectMaxAggregateInputType
-    /**
-     * @deprecated since 2.23.0 please use `_max`
-    **/
-    max?: ProjectMaxAggregateInputType
   }
 
   export type GetProjectAggregateType<T extends ProjectAggregateArgs> = {
@@ -1768,7 +1718,7 @@ export namespace Prisma {
     
   export type ProjectGroupByArgs = {
     where?: ProjectWhereInput
-    orderBy?: Enumerable<ProjectOrderByInput>
+    orderBy?: Enumerable<ProjectOrderByWithAggregationInput>
     by: Array<ProjectScalarFieldEnum>
     having?: ProjectScalarWhereWithAggregatesInput
     take?: number
@@ -2245,7 +2195,7 @@ export namespace Prisma {
      * Determine the order of Projects to fetch.
      * 
     **/
-    orderBy?: Enumerable<ProjectOrderByInput>
+    orderBy?: Enumerable<ProjectOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2297,7 +2247,7 @@ export namespace Prisma {
      * Determine the order of Projects to fetch.
      * 
     **/
-    orderBy?: Enumerable<ProjectOrderByInput>
+    orderBy?: Enumerable<ProjectOrderByWithRelationInput>
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
@@ -2501,7 +2451,7 @@ export namespace Prisma {
     email?: StringFilter | string
   }
 
-  export type UserOrderByInput = {
+  export type UserOrderByWithRelationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -2513,6 +2463,20 @@ export namespace Prisma {
   export type UserWhereUniqueInput = {
     id?: number
     email?: string
+  }
+
+  export type UserOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
+    email?: SortOrder
+    _count?: UserCountOrderByAggregateInput
+    _avg?: UserAvgOrderByAggregateInput
+    _max?: UserMaxOrderByAggregateInput
+    _min?: UserMinOrderByAggregateInput
+    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
@@ -2539,7 +2503,7 @@ export namespace Prisma {
     financement?: StringFilter | string
   }
 
-  export type ProjectOrderByInput = {
+  export type ProjectOrderByWithRelationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -2550,6 +2514,20 @@ export namespace Prisma {
 
   export type ProjectWhereUniqueInput = {
     id?: number
+  }
+
+  export type ProjectOrderByWithAggregationInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectName?: SortOrder
+    description?: SortOrder
+    financement?: SortOrder
+    _count?: ProjectCountOrderByAggregateInput
+    _avg?: ProjectAvgOrderByAggregateInput
+    _max?: ProjectMaxOrderByAggregateInput
+    _min?: ProjectMinOrderByAggregateInput
+    _sum?: ProjectSumOrderByAggregateInput
   }
 
   export type ProjectScalarWhereWithAggregatesInput = {
@@ -2720,6 +2698,41 @@ export namespace Prisma {
     not?: NestedStringFilter | string
   }
 
+  export type UserCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
+    email?: SortOrder
+  }
+
+  export type UserAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type UserMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
+    email?: SortOrder
+  }
+
+  export type UserMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    firstname?: SortOrder
+    lastname?: SortOrder
+    email?: SortOrder
+  }
+
+  export type UserSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type IntWithAggregatesFilter = {
     equals?: number
     in?: Enumerable<number>
@@ -2730,35 +2743,10 @@ export namespace Prisma {
     gte?: number
     not?: NestedIntWithAggregatesFilter | number
     _count?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    count?: NestedIntFilter
     _avg?: NestedFloatFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    avg?: NestedFloatFilter
     _sum?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    sum?: NestedIntFilter
     _min?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    min?: NestedIntFilter
     _max?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    max?: NestedIntFilter
   }
 
   export type DateTimeWithAggregatesFilter = {
@@ -2771,23 +2759,8 @@ export namespace Prisma {
     gte?: Date | string
     not?: NestedDateTimeWithAggregatesFilter | Date | string
     _count?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    count?: NestedIntFilter
     _min?: NestedDateTimeFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    min?: NestedDateTimeFilter
     _max?: NestedDateTimeFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    max?: NestedDateTimeFilter
   }
 
   export type StringWithAggregatesFilter = {
@@ -2803,23 +2776,43 @@ export namespace Prisma {
     endsWith?: string
     not?: NestedStringWithAggregatesFilter | string
     _count?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    count?: NestedIntFilter
     _min?: NestedStringFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    min?: NestedStringFilter
     _max?: NestedStringFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    max?: NestedStringFilter
+  }
+
+  export type ProjectCountOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectName?: SortOrder
+    description?: SortOrder
+    financement?: SortOrder
+  }
+
+  export type ProjectAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type ProjectMaxOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectName?: SortOrder
+    description?: SortOrder
+    financement?: SortOrder
+  }
+
+  export type ProjectMinOrderByAggregateInput = {
+    id?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    projectName?: SortOrder
+    description?: SortOrder
+    financement?: SortOrder
+  }
+
+  export type ProjectSumOrderByAggregateInput = {
+    id?: SortOrder
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
@@ -2884,35 +2877,10 @@ export namespace Prisma {
     gte?: number
     not?: NestedIntWithAggregatesFilter | number
     _count?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    count?: NestedIntFilter
     _avg?: NestedFloatFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    avg?: NestedFloatFilter
     _sum?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    sum?: NestedIntFilter
     _min?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    min?: NestedIntFilter
     _max?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    max?: NestedIntFilter
   }
 
   export type NestedFloatFilter = {
@@ -2936,23 +2904,8 @@ export namespace Prisma {
     gte?: Date | string
     not?: NestedDateTimeWithAggregatesFilter | Date | string
     _count?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    count?: NestedIntFilter
     _min?: NestedDateTimeFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    min?: NestedDateTimeFilter
     _max?: NestedDateTimeFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    max?: NestedDateTimeFilter
   }
 
   export type NestedStringWithAggregatesFilter = {
@@ -2968,23 +2921,8 @@ export namespace Prisma {
     endsWith?: string
     not?: NestedStringWithAggregatesFilter | string
     _count?: NestedIntFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    count?: NestedIntFilter
     _min?: NestedStringFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    min?: NestedStringFilter
     _max?: NestedStringFilter
-    /**
-     * @deprecated since 2.23 because Aggregation keywords got unified to use underscore as prefix to prevent field clashes.
-     * 
-    **/
-    max?: NestedStringFilter
   }
 
 

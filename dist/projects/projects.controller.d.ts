@@ -1,9 +1,11 @@
 import { ProjectsService } from './projects.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
+import { User } from '@prisma/client';
 export declare class ProjectsController {
     private projectsService;
     constructor(projectsService: ProjectsService);
+    user: User;
     create(createProjectDto: CreateProjectDto): import(".prisma/client").Prisma.Prisma__ProjectClient<import(".prisma/client").Project>;
     findAll(): import(".prisma/client").PrismaPromise<import(".prisma/client").Project[]>;
     findOne(id: string): import(".prisma/client").Prisma.Prisma__ProjectClient<import(".prisma/client").Project>;

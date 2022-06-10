@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { User } from '@prisma/client';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { CreateProjectDto } from './dto/create-project.dto';
 import { UpdateProjectDto } from './dto/update-project.dto';
@@ -6,8 +7,12 @@ import { UpdateProjectDto } from './dto/update-project.dto';
 @Injectable()
 export class ProjectsService {
   constructor(private readonly prisma: PrismaService) {}
-  create(createProjectDto: CreateProjectDto) {
-    return this.prisma.project.create({ data: createProjectDto });
+  create(project: CreateProjectDto) {
+    
+    return this.prisma.project.create({ data: project,
+     
+      
+    });
   }
 
   findAll() {
