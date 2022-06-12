@@ -10,6 +10,6 @@ export class CreateProjectDto {
     @ApiProperty()
     financement: string;
 
-    // @ApiProperty()
-    // author: CreateUserDto;
+    @ApiProperty()
+    author: CreateUserDto;
 }
