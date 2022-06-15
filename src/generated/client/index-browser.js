@@ -80,10 +80,9 @@ exports.Prisma.UserScalarFieldEnum = makeEnum({
   id: 'id',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  email: 'email',
-  password: 'password',
   firstname: 'firstname',
-  lastname: 'lastname'
+  lastname: 'lastname',
+  email: 'email'
 });
 
 exports.Prisma.ProjectScalarFieldEnum = makeEnum({
@@ -95,13 +94,6 @@ exports.Prisma.ProjectScalarFieldEnum = makeEnum({
   financement: 'financement'
 });
 
-exports.Prisma.ProjectsOnUsersScalarFieldEnum = makeEnum({
-  userId: 'userId',
-  projectId: 'projectId',
-  assignedAt: 'assignedAt',
-  assignedBy: 'assignedBy'
-});
-
 exports.Prisma.SortOrder = makeEnum({
   asc: 'asc',
   desc: 'desc'
@@ -110,8 +102,7 @@ exports.Prisma.SortOrder = makeEnum({
 
 exports.Prisma.ModelName = makeEnum({
   User: 'User',
-  Project: 'Project',
-  ProjectsOnUsers: 'ProjectsOnUsers'
+  Project: 'Project'
 });
 
 /**

@@ -20,10 +20,9 @@ export type User = {
   id: number
   createdAt: Date
   updatedAt: Date
-  email: string
-  password: string
   firstname: string
   lastname: string
+  email: string
 }
 
 /**
@@ -37,17 +36,6 @@ export type Project = {
   projectName: string
   description: string
   financement: string
-}
-
-/**
- * Model ProjectsOnUsers
- * 
- */
-export type ProjectsOnUsers = {
-  userId: number
-  projectId: number
-  assignedAt: Date
-  assignedBy: string
 }
 
 
@@ -210,16 +198,6 @@ export class PrismaClient<
     * ```
     */
   get project(): Prisma.ProjectDelegate<GlobalReject>;
-
-  /**
-   * `prisma.projectsOnUsers`: Exposes CRUD operations for the **ProjectsOnUsers** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more ProjectsOnUsers
-    * const projectsOnUsers = await prisma.projectsOnUsers.findMany()
-    * ```
-    */
-  get projectsOnUsers(): Prisma.ProjectsOnUsersDelegate<GlobalReject>;
 }
 
 export namespace Prisma {
@@ -637,8 +615,7 @@ export namespace Prisma {
 
   export const ModelName: {
     User: 'User',
-    Project: 'Project',
-    ProjectsOnUsers: 'ProjectsOnUsers'
+    Project: 'Project'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -796,103 +773,6 @@ export namespace Prisma {
    */
 
 
-  /**
-   * Count Type UserCountOutputType
-   */
-
-
-  export type UserCountOutputType = {
-    project: number
-  }
-
-  export type UserCountOutputTypeSelect = {
-    project?: boolean
-  }
-
-  export type UserCountOutputTypeGetPayload<
-    S extends boolean | null | undefined | UserCountOutputTypeArgs,
-    U = keyof S
-      > = S extends true
-        ? UserCountOutputType
-    : S extends undefined
-    ? never
-    : S extends UserCountOutputTypeArgs
-    ?'include' extends U
-    ? UserCountOutputType 
-    : 'select' extends U
-    ? {
-    [P in TrueKeys<S['select']>]:
-    P extends keyof UserCountOutputType ? UserCountOutputType[P] : never
-  } 
-    : UserCountOutputType
-  : UserCountOutputType
-
-
-
-
-  // Custom InputTypes
-
-  /**
-   * UserCountOutputType without action
-   */
-  export type UserCountOutputTypeArgs = {
-    /**
-     * Select specific fields to fetch from the UserCountOutputType
-     * 
-    **/
-    select?: UserCountOutputTypeSelect | null
-  }
-
-
-
-  /**
-   * Count Type ProjectCountOutputType
-   */
-
-
-  export type ProjectCountOutputType = {
-    author: number
-  }
-
-  export type ProjectCountOutputTypeSelect = {
-    author?: boolean
-  }
-
-  export type ProjectCountOutputTypeGetPayload<
-    S extends boolean | null | undefined | ProjectCountOutputTypeArgs,
-    U = keyof S
-      > = S extends true
-        ? ProjectCountOutputType
-    : S extends undefined
-    ? never
-    : S extends ProjectCountOutputTypeArgs
-    ?'include' extends U
-    ? ProjectCountOutputType 
-    : 'select' extends U
-    ? {
-    [P in TrueKeys<S['select']>]:
-    P extends keyof ProjectCountOutputType ? ProjectCountOutputType[P] : never
-  } 
-    : ProjectCountOutputType
-  : ProjectCountOutputType
-
-
-
-
-  // Custom InputTypes
-
-  /**
-   * ProjectCountOutputType without action
-   */
-  export type ProjectCountOutputTypeArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectCountOutputType
-     * 
-    **/
-    select?: ProjectCountOutputTypeSelect | null
-  }
-
-
 
   /**
    * Models
@@ -923,30 +803,27 @@ export namespace Prisma {
     id: number | null
     createdAt: Date | null
     updatedAt: Date | null
-    email: string | null
-    password: string | null
     firstname: string | null
     lastname: string | null
+    email: string | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     createdAt: Date | null
     updatedAt: Date | null
-    email: string | null
-    password: string | null
     firstname: string | null
     lastname: string | null
+    email: string | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     createdAt: number
     updatedAt: number
-    email: number
-    password: number
     firstname: number
     lastname: number
+    email: number
     _all: number
   }
 
@@ -963,30 +840,27 @@ export namespace Prisma {
     id?: true
     createdAt?: true
     updatedAt?: true
-    email?: true
-    password?: true
     firstname?: true
     lastname?: true
+    email?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
-    email?: true
-    password?: true
     firstname?: true
     lastname?: true
+    email?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     createdAt?: true
     updatedAt?: true
-    email?: true
-    password?: true
     firstname?: true
     lastname?: true
+    email?: true
     _all?: true
   }
 
@@ -1086,10 +960,9 @@ export namespace Prisma {
     id: number
     createdAt: Date
     updatedAt: Date
-    email: string
-    password: string
     firstname: string
     lastname: string
+    email: string
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1115,17 +988,9 @@ export namespace Prisma {
     id?: boolean
     createdAt?: boolean
     updatedAt?: boolean
-    email?: boolean
-    password?: boolean
     firstname?: boolean
     lastname?: boolean
-    project?: boolean | ProjectsOnUsersFindManyArgs
-    _count?: boolean | UserCountOutputTypeArgs
-  }
-
-  export type UserInclude = {
-    project?: boolean | ProjectsOnUsersFindManyArgs
-    _count?: boolean | UserCountOutputTypeArgs
+    email?: boolean
   }
 
   export type UserGetPayload<
@@ -1137,16 +1002,11 @@ export namespace Prisma {
     ? never
     : S extends UserArgs | UserFindManyArgs
     ?'include' extends U
-    ? User  & {
-    [P in TrueKeys<S['include']>]:
-        P extends 'project' ? Array < ProjectsOnUsersGetPayload<S['include'][P]>>  :
-        P extends '_count' ? UserCountOutputTypeGetPayload<S['include'][P]> :  never
-  } 
+    ? User 
     : 'select' extends U
     ? {
     [P in TrueKeys<S['select']>]:
-        P extends 'project' ? Array < ProjectsOnUsersGetPayload<S['select'][P]>>  :
-        P extends '_count' ? UserCountOutputTypeGetPayload<S['select'][P]> :  P extends keyof User ? User[P] : never
+    P extends keyof User ? User[P] : never
   } 
     : User
   : User
@@ -1486,7 +1346,6 @@ export namespace Prisma {
     constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
     readonly [Symbol.toStringTag]: 'PrismaClientPromise';
 
-    project<T extends ProjectsOnUsersFindManyArgs = {}>(args?: Subset<T, ProjectsOnUsersFindManyArgs>): CheckSelect<T, PrismaPromise<Array<ProjectsOnUsers>>, PrismaPromise<Array<ProjectsOnUsersGetPayload<T>>>>;
 
     private get _document();
     /**
@@ -1523,11 +1382,6 @@ export namespace Prisma {
     **/
     select?: UserSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
-    /**
      * Throw an Error if a User can't be found
      * 
     **/
@@ -1549,11 +1403,6 @@ export namespace Prisma {
      * 
     **/
     select?: UserSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
     /**
      * Throw an Error if a User can't be found
      * 
@@ -1612,11 +1461,6 @@ export namespace Prisma {
     **/
     select?: UserSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
-    /**
      * Filter, which Users to fetch.
      * 
     **/
@@ -1663,11 +1507,6 @@ export namespace Prisma {
     **/
     select?: UserSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
-    /**
      * The data needed to create a User.
      * 
     **/
@@ -1697,11 +1536,6 @@ export namespace Prisma {
      * 
     **/
     select?: UserSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
     /**
      * The data needed to update a User.
      * 
@@ -1742,11 +1576,6 @@ export namespace Prisma {
     **/
     select?: UserSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
-    /**
      * The filter to search for the User to update in case it exists.
      * 
     **/
@@ -1773,11 +1602,6 @@ export namespace Prisma {
      * 
     **/
     select?: UserSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
     /**
      * Filter which User to delete.
      * 
@@ -1807,11 +1631,6 @@ export namespace Prisma {
      * 
     **/
     select?: UserSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: UserInclude | null
   }
 
 
@@ -2029,13 +1848,6 @@ export namespace Prisma {
     projectName?: boolean
     description?: boolean
     financement?: boolean
-    author?: boolean | ProjectsOnUsersFindManyArgs
-    _count?: boolean | ProjectCountOutputTypeArgs
-  }
-
-  export type ProjectInclude = {
-    author?: boolean | ProjectsOnUsersFindManyArgs
-    _count?: boolean | ProjectCountOutputTypeArgs
   }
 
   export type ProjectGetPayload<
@@ -2047,16 +1859,11 @@ export namespace Prisma {
     ? never
     : S extends ProjectArgs | ProjectFindManyArgs
     ?'include' extends U
-    ? Project  & {
-    [P in TrueKeys<S['include']>]:
-        P extends 'author' ? Array < ProjectsOnUsersGetPayload<S['include'][P]>>  :
-        P extends '_count' ? ProjectCountOutputTypeGetPayload<S['include'][P]> :  never
-  } 
+    ? Project 
     : 'select' extends U
     ? {
     [P in TrueKeys<S['select']>]:
-        P extends 'author' ? Array < ProjectsOnUsersGetPayload<S['select'][P]>>  :
-        P extends '_count' ? ProjectCountOutputTypeGetPayload<S['select'][P]> :  P extends keyof Project ? Project[P] : never
+    P extends keyof Project ? Project[P] : never
   } 
     : Project
   : Project
@@ -2396,7 +2203,6 @@ export namespace Prisma {
     constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
     readonly [Symbol.toStringTag]: 'PrismaClientPromise';
 
-    author<T extends ProjectsOnUsersFindManyArgs = {}>(args?: Subset<T, ProjectsOnUsersFindManyArgs>): CheckSelect<T, PrismaPromise<Array<ProjectsOnUsers>>, PrismaPromise<Array<ProjectsOnUsersGetPayload<T>>>>;
 
     private get _document();
     /**
@@ -2433,11 +2239,6 @@ export namespace Prisma {
     **/
     select?: ProjectSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
-    /**
      * Throw an Error if a Project can't be found
      * 
     **/
@@ -2459,11 +2260,6 @@ export namespace Prisma {
      * 
     **/
     select?: ProjectSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
     /**
      * Throw an Error if a Project can't be found
      * 
@@ -2522,11 +2318,6 @@ export namespace Prisma {
     **/
     select?: ProjectSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
-    /**
      * Filter, which Projects to fetch.
      * 
     **/
@@ -2573,11 +2364,6 @@ export namespace Prisma {
     **/
     select?: ProjectSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
-    /**
      * The data needed to create a Project.
      * 
     **/
@@ -2607,11 +2393,6 @@ export namespace Prisma {
      * 
     **/
     select?: ProjectSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
     /**
      * The data needed to update a Project.
      * 
@@ -2652,11 +2433,6 @@ export namespace Prisma {
     **/
     select?: ProjectSelect | null
     /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
-    /**
      * The filter to search for the Project to update in case it exists.
      * 
     **/
@@ -2683,11 +2459,6 @@ export namespace Prisma {
      * 
     **/
     select?: ProjectSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
     /**
      * Filter which Project to delete.
      * 
@@ -2717,911 +2488,6 @@ export namespace Prisma {
      * 
     **/
     select?: ProjectSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectInclude | null
-  }
-
-
-
-  /**
-   * Model ProjectsOnUsers
-   */
-
-
-  export type AggregateProjectsOnUsers = {
-    _count: ProjectsOnUsersCountAggregateOutputType | null
-    _avg: ProjectsOnUsersAvgAggregateOutputType | null
-    _sum: ProjectsOnUsersSumAggregateOutputType | null
-    _min: ProjectsOnUsersMinAggregateOutputType | null
-    _max: ProjectsOnUsersMaxAggregateOutputType | null
-  }
-
-  export type ProjectsOnUsersAvgAggregateOutputType = {
-    userId: number | null
-    projectId: number | null
-  }
-
-  export type ProjectsOnUsersSumAggregateOutputType = {
-    userId: number | null
-    projectId: number | null
-  }
-
-  export type ProjectsOnUsersMinAggregateOutputType = {
-    userId: number | null
-    projectId: number | null
-    assignedAt: Date | null
-    assignedBy: string | null
-  }
-
-  export type ProjectsOnUsersMaxAggregateOutputType = {
-    userId: number | null
-    projectId: number | null
-    assignedAt: Date | null
-    assignedBy: string | null
-  }
-
-  export type ProjectsOnUsersCountAggregateOutputType = {
-    userId: number
-    projectId: number
-    assignedAt: number
-    assignedBy: number
-    _all: number
-  }
-
-
-  export type ProjectsOnUsersAvgAggregateInputType = {
-    userId?: true
-    projectId?: true
-  }
-
-  export type ProjectsOnUsersSumAggregateInputType = {
-    userId?: true
-    projectId?: true
-  }
-
-  export type ProjectsOnUsersMinAggregateInputType = {
-    userId?: true
-    projectId?: true
-    assignedAt?: true
-    assignedBy?: true
-  }
-
-  export type ProjectsOnUsersMaxAggregateInputType = {
-    userId?: true
-    projectId?: true
-    assignedAt?: true
-    assignedBy?: true
-  }
-
-  export type ProjectsOnUsersCountAggregateInputType = {
-    userId?: true
-    projectId?: true
-    assignedAt?: true
-    assignedBy?: true
-    _all?: true
-  }
-
-  export type ProjectsOnUsersAggregateArgs = {
-    /**
-     * Filter which ProjectsOnUsers to aggregate.
-     * 
-    **/
-    where?: ProjectsOnUsersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ProjectsOnUsers to fetch.
-     * 
-    **/
-    orderBy?: Enumerable<ProjectsOnUsersOrderByWithRelationInput>
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     * 
-    **/
-    cursor?: ProjectsOnUsersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ProjectsOnUsers from the position of the cursor.
-     * 
-    **/
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ProjectsOnUsers.
-     * 
-    **/
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned ProjectsOnUsers
-    **/
-    _count?: true | ProjectsOnUsersCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: ProjectsOnUsersAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: ProjectsOnUsersSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ProjectsOnUsersMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ProjectsOnUsersMaxAggregateInputType
-  }
-
-  export type GetProjectsOnUsersAggregateType<T extends ProjectsOnUsersAggregateArgs> = {
-        [P in keyof T & keyof AggregateProjectsOnUsers]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProjectsOnUsers[P]>
-      : GetScalarType<T[P], AggregateProjectsOnUsers[P]>
-  }
-
-
-
-
-  export type ProjectsOnUsersGroupByArgs = {
-    where?: ProjectsOnUsersWhereInput
-    orderBy?: Enumerable<ProjectsOnUsersOrderByWithAggregationInput>
-    by: Array<ProjectsOnUsersScalarFieldEnum>
-    having?: ProjectsOnUsersScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ProjectsOnUsersCountAggregateInputType | true
-    _avg?: ProjectsOnUsersAvgAggregateInputType
-    _sum?: ProjectsOnUsersSumAggregateInputType
-    _min?: ProjectsOnUsersMinAggregateInputType
-    _max?: ProjectsOnUsersMaxAggregateInputType
-  }
-
-
-  export type ProjectsOnUsersGroupByOutputType = {
-    userId: number
-    projectId: number
-    assignedAt: Date
-    assignedBy: string
-    _count: ProjectsOnUsersCountAggregateOutputType | null
-    _avg: ProjectsOnUsersAvgAggregateOutputType | null
-    _sum: ProjectsOnUsersSumAggregateOutputType | null
-    _min: ProjectsOnUsersMinAggregateOutputType | null
-    _max: ProjectsOnUsersMaxAggregateOutputType | null
-  }
-
-  type GetProjectsOnUsersGroupByPayload<T extends ProjectsOnUsersGroupByArgs> = PrismaPromise<
-    Array<
-      PickArray<ProjectsOnUsersGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ProjectsOnUsersGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ProjectsOnUsersGroupByOutputType[P]>
-            : GetScalarType<T[P], ProjectsOnUsersGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ProjectsOnUsersSelect = {
-    user?: boolean | UserArgs
-    userId?: boolean
-    project?: boolean | ProjectArgs
-    projectId?: boolean
-    assignedAt?: boolean
-    assignedBy?: boolean
-  }
-
-  export type ProjectsOnUsersInclude = {
-    user?: boolean | UserArgs
-    project?: boolean | ProjectArgs
-  }
-
-  export type ProjectsOnUsersGetPayload<
-    S extends boolean | null | undefined | ProjectsOnUsersArgs,
-    U = keyof S
-      > = S extends true
-        ? ProjectsOnUsers
-    : S extends undefined
-    ? never
-    : S extends ProjectsOnUsersArgs | ProjectsOnUsersFindManyArgs
-    ?'include' extends U
-    ? ProjectsOnUsers  & {
-    [P in TrueKeys<S['include']>]:
-        P extends 'user' ? UserGetPayload<S['include'][P]> :
-        P extends 'project' ? ProjectGetPayload<S['include'][P]> :  never
-  } 
-    : 'select' extends U
-    ? {
-    [P in TrueKeys<S['select']>]:
-        P extends 'user' ? UserGetPayload<S['select'][P]> :
-        P extends 'project' ? ProjectGetPayload<S['select'][P]> :  P extends keyof ProjectsOnUsers ? ProjectsOnUsers[P] : never
-  } 
-    : ProjectsOnUsers
-  : ProjectsOnUsers
-
-
-  type ProjectsOnUsersCountArgs = Merge<
-    Omit<ProjectsOnUsersFindManyArgs, 'select' | 'include'> & {
-      select?: ProjectsOnUsersCountAggregateInputType | true
-    }
-  >
-
-  export interface ProjectsOnUsersDelegate<GlobalRejectSettings> {
-    /**
-     * Find zero or one ProjectsOnUsers that matches the filter.
-     * @param {ProjectsOnUsersFindUniqueArgs} args - Arguments to find a ProjectsOnUsers
-     * @example
-     * // Get one ProjectsOnUsers
-     * const projectsOnUsers = await prisma.projectsOnUsers.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findUnique<T extends ProjectsOnUsersFindUniqueArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args: SelectSubset<T, ProjectsOnUsersFindUniqueArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findUnique', 'ProjectsOnUsers'> extends True ? CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers>, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T>>> : CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers | null >, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T> | null >>
-
-    /**
-     * Find the first ProjectsOnUsers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsOnUsersFindFirstArgs} args - Arguments to find a ProjectsOnUsers
-     * @example
-     * // Get one ProjectsOnUsers
-     * const projectsOnUsers = await prisma.projectsOnUsers.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-    **/
-    findFirst<T extends ProjectsOnUsersFindFirstArgs,  LocalRejectSettings = T["rejectOnNotFound"] extends RejectOnNotFound ? T['rejectOnNotFound'] : undefined>(
-      args?: SelectSubset<T, ProjectsOnUsersFindFirstArgs>
-    ): HasReject<GlobalRejectSettings, LocalRejectSettings, 'findFirst', 'ProjectsOnUsers'> extends True ? CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers>, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T>>> : CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers | null >, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T> | null >>
-
-    /**
-     * Find zero or more ProjectsOnUsers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsOnUsersFindManyArgs=} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all ProjectsOnUsers
-     * const projectsOnUsers = await prisma.projectsOnUsers.findMany()
-     * 
-     * // Get first 10 ProjectsOnUsers
-     * const projectsOnUsers = await prisma.projectsOnUsers.findMany({ take: 10 })
-     * 
-     * // Only select the `userId`
-     * const projectsOnUsersWithUserIdOnly = await prisma.projectsOnUsers.findMany({ select: { userId: true } })
-     * 
-    **/
-    findMany<T extends ProjectsOnUsersFindManyArgs>(
-      args?: SelectSubset<T, ProjectsOnUsersFindManyArgs>
-    ): CheckSelect<T, PrismaPromise<Array<ProjectsOnUsers>>, PrismaPromise<Array<ProjectsOnUsersGetPayload<T>>>>
-
-    /**
-     * Create a ProjectsOnUsers.
-     * @param {ProjectsOnUsersCreateArgs} args - Arguments to create a ProjectsOnUsers.
-     * @example
-     * // Create one ProjectsOnUsers
-     * const ProjectsOnUsers = await prisma.projectsOnUsers.create({
-     *   data: {
-     *     // ... data to create a ProjectsOnUsers
-     *   }
-     * })
-     * 
-    **/
-    create<T extends ProjectsOnUsersCreateArgs>(
-      args: SelectSubset<T, ProjectsOnUsersCreateArgs>
-    ): CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers>, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T>>>
-
-    /**
-     * Create many ProjectsOnUsers.
-     *     @param {ProjectsOnUsersCreateManyArgs} args - Arguments to create many ProjectsOnUsers.
-     *     @example
-     *     // Create many ProjectsOnUsers
-     *     const projectsOnUsers = await prisma.projectsOnUsers.createMany({
-     *       data: {
-     *         // ... provide data here
-     *       }
-     *     })
-     *     
-    **/
-    createMany<T extends ProjectsOnUsersCreateManyArgs>(
-      args?: SelectSubset<T, ProjectsOnUsersCreateManyArgs>
-    ): PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a ProjectsOnUsers.
-     * @param {ProjectsOnUsersDeleteArgs} args - Arguments to delete one ProjectsOnUsers.
-     * @example
-     * // Delete one ProjectsOnUsers
-     * const ProjectsOnUsers = await prisma.projectsOnUsers.delete({
-     *   where: {
-     *     // ... filter to delete one ProjectsOnUsers
-     *   }
-     * })
-     * 
-    **/
-    delete<T extends ProjectsOnUsersDeleteArgs>(
-      args: SelectSubset<T, ProjectsOnUsersDeleteArgs>
-    ): CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers>, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T>>>
-
-    /**
-     * Update one ProjectsOnUsers.
-     * @param {ProjectsOnUsersUpdateArgs} args - Arguments to update one ProjectsOnUsers.
-     * @example
-     * // Update one ProjectsOnUsers
-     * const projectsOnUsers = await prisma.projectsOnUsers.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    update<T extends ProjectsOnUsersUpdateArgs>(
-      args: SelectSubset<T, ProjectsOnUsersUpdateArgs>
-    ): CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers>, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T>>>
-
-    /**
-     * Delete zero or more ProjectsOnUsers.
-     * @param {ProjectsOnUsersDeleteManyArgs} args - Arguments to filter ProjectsOnUsers to delete.
-     * @example
-     * // Delete a few ProjectsOnUsers
-     * const { count } = await prisma.projectsOnUsers.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-    **/
-    deleteMany<T extends ProjectsOnUsersDeleteManyArgs>(
-      args?: SelectSubset<T, ProjectsOnUsersDeleteManyArgs>
-    ): PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more ProjectsOnUsers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsOnUsersUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many ProjectsOnUsers
-     * const projectsOnUsers = await prisma.projectsOnUsers.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-    **/
-    updateMany<T extends ProjectsOnUsersUpdateManyArgs>(
-      args: SelectSubset<T, ProjectsOnUsersUpdateManyArgs>
-    ): PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one ProjectsOnUsers.
-     * @param {ProjectsOnUsersUpsertArgs} args - Arguments to update or create a ProjectsOnUsers.
-     * @example
-     * // Update or create a ProjectsOnUsers
-     * const projectsOnUsers = await prisma.projectsOnUsers.upsert({
-     *   create: {
-     *     // ... data to create a ProjectsOnUsers
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the ProjectsOnUsers we want to update
-     *   }
-     * })
-    **/
-    upsert<T extends ProjectsOnUsersUpsertArgs>(
-      args: SelectSubset<T, ProjectsOnUsersUpsertArgs>
-    ): CheckSelect<T, Prisma__ProjectsOnUsersClient<ProjectsOnUsers>, Prisma__ProjectsOnUsersClient<ProjectsOnUsersGetPayload<T>>>
-
-    /**
-     * Count the number of ProjectsOnUsers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsOnUsersCountArgs} args - Arguments to filter ProjectsOnUsers to count.
-     * @example
-     * // Count the number of ProjectsOnUsers
-     * const count = await prisma.projectsOnUsers.count({
-     *   where: {
-     *     // ... the filter for the ProjectsOnUsers we want to count
-     *   }
-     * })
-    **/
-    count<T extends ProjectsOnUsersCountArgs>(
-      args?: Subset<T, ProjectsOnUsersCountArgs>,
-    ): PrismaPromise<
-      T extends _Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ProjectsOnUsersCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a ProjectsOnUsers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsOnUsersAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ProjectsOnUsersAggregateArgs>(args: Subset<T, ProjectsOnUsersAggregateArgs>): PrismaPromise<GetProjectsOnUsersAggregateType<T>>
-
-    /**
-     * Group by ProjectsOnUsers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ProjectsOnUsersGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ProjectsOnUsersGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ProjectsOnUsersGroupByArgs['orderBy'] }
-        : { orderBy?: ProjectsOnUsersGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends TupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ProjectsOnUsersGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProjectsOnUsersGroupByPayload<T> : PrismaPromise<InputErrors>
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for ProjectsOnUsers.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export class Prisma__ProjectsOnUsersClient<T> implements PrismaPromise<T> {
-    [prisma]: true;
-    private readonly _dmmf;
-    private readonly _fetcher;
-    private readonly _queryType;
-    private readonly _rootField;
-    private readonly _clientMethod;
-    private readonly _args;
-    private readonly _dataPath;
-    private readonly _errorFormat;
-    private readonly _measurePerformance?;
-    private _isList;
-    private _callsite;
-    private _requestPromise?;
-    constructor(_dmmf: runtime.DMMFClass, _fetcher: PrismaClientFetcher, _queryType: 'query' | 'mutation', _rootField: string, _clientMethod: string, _args: any, _dataPath: string[], _errorFormat: ErrorFormat, _measurePerformance?: boolean | undefined, _isList?: boolean);
-    readonly [Symbol.toStringTag]: 'PrismaClientPromise';
-
-    user<T extends UserArgs = {}>(args?: Subset<T, UserArgs>): CheckSelect<T, Prisma__UserClient<User | null >, Prisma__UserClient<UserGetPayload<T> | null >>;
-
-    project<T extends ProjectArgs = {}>(args?: Subset<T, ProjectArgs>): CheckSelect<T, Prisma__ProjectClient<Project | null >, Prisma__ProjectClient<ProjectGetPayload<T> | null >>;
-
-    private get _document();
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): Promise<TResult1 | TResult2>;
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): Promise<T | TResult>;
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): Promise<T>;
-  }
-
-  // Custom InputTypes
-
-  /**
-   * ProjectsOnUsers findUnique
-   */
-  export type ProjectsOnUsersFindUniqueArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
-    /**
-     * Throw an Error if a ProjectsOnUsers can't be found
-     * 
-    **/
-    rejectOnNotFound?: RejectOnNotFound
-    /**
-     * Filter, which ProjectsOnUsers to fetch.
-     * 
-    **/
-    where: ProjectsOnUsersWhereUniqueInput
-  }
-
-
-  /**
-   * ProjectsOnUsers findFirst
-   */
-  export type ProjectsOnUsersFindFirstArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
-    /**
-     * Throw an Error if a ProjectsOnUsers can't be found
-     * 
-    **/
-    rejectOnNotFound?: RejectOnNotFound
-    /**
-     * Filter, which ProjectsOnUsers to fetch.
-     * 
-    **/
-    where?: ProjectsOnUsersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ProjectsOnUsers to fetch.
-     * 
-    **/
-    orderBy?: Enumerable<ProjectsOnUsersOrderByWithRelationInput>
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for ProjectsOnUsers.
-     * 
-    **/
-    cursor?: ProjectsOnUsersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ProjectsOnUsers from the position of the cursor.
-     * 
-    **/
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ProjectsOnUsers.
-     * 
-    **/
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of ProjectsOnUsers.
-     * 
-    **/
-    distinct?: Enumerable<ProjectsOnUsersScalarFieldEnum>
-  }
-
-
-  /**
-   * ProjectsOnUsers findMany
-   */
-  export type ProjectsOnUsersFindManyArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
-    /**
-     * Filter, which ProjectsOnUsers to fetch.
-     * 
-    **/
-    where?: ProjectsOnUsersWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of ProjectsOnUsers to fetch.
-     * 
-    **/
-    orderBy?: Enumerable<ProjectsOnUsersOrderByWithRelationInput>
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing ProjectsOnUsers.
-     * 
-    **/
-    cursor?: ProjectsOnUsersWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` ProjectsOnUsers from the position of the cursor.
-     * 
-    **/
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` ProjectsOnUsers.
-     * 
-    **/
-    skip?: number
-    distinct?: Enumerable<ProjectsOnUsersScalarFieldEnum>
-  }
-
-
-  /**
-   * ProjectsOnUsers create
-   */
-  export type ProjectsOnUsersCreateArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
-    /**
-     * The data needed to create a ProjectsOnUsers.
-     * 
-    **/
-    data: XOR<ProjectsOnUsersCreateInput, ProjectsOnUsersUncheckedCreateInput>
-  }
-
-
-  /**
-   * ProjectsOnUsers createMany
-   */
-  export type ProjectsOnUsersCreateManyArgs = {
-    /**
-     * The data used to create many ProjectsOnUsers.
-     * 
-    **/
-    data: Enumerable<ProjectsOnUsersCreateManyInput>
-    skipDuplicates?: boolean
-  }
-
-
-  /**
-   * ProjectsOnUsers update
-   */
-  export type ProjectsOnUsersUpdateArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
-    /**
-     * The data needed to update a ProjectsOnUsers.
-     * 
-    **/
-    data: XOR<ProjectsOnUsersUpdateInput, ProjectsOnUsersUncheckedUpdateInput>
-    /**
-     * Choose, which ProjectsOnUsers to update.
-     * 
-    **/
-    where: ProjectsOnUsersWhereUniqueInput
-  }
-
-
-  /**
-   * ProjectsOnUsers updateMany
-   */
-  export type ProjectsOnUsersUpdateManyArgs = {
-    /**
-     * The data used to update ProjectsOnUsers.
-     * 
-    **/
-    data: XOR<ProjectsOnUsersUpdateManyMutationInput, ProjectsOnUsersUncheckedUpdateManyInput>
-    /**
-     * Filter which ProjectsOnUsers to update
-     * 
-    **/
-    where?: ProjectsOnUsersWhereInput
-  }
-
-
-  /**
-   * ProjectsOnUsers upsert
-   */
-  export type ProjectsOnUsersUpsertArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
-    /**
-     * The filter to search for the ProjectsOnUsers to update in case it exists.
-     * 
-    **/
-    where: ProjectsOnUsersWhereUniqueInput
-    /**
-     * In case the ProjectsOnUsers found by the `where` argument doesn't exist, create a new ProjectsOnUsers with this data.
-     * 
-    **/
-    create: XOR<ProjectsOnUsersCreateInput, ProjectsOnUsersUncheckedCreateInput>
-    /**
-     * In case the ProjectsOnUsers was found with the provided `where` argument, update it with this data.
-     * 
-    **/
-    update: XOR<ProjectsOnUsersUpdateInput, ProjectsOnUsersUncheckedUpdateInput>
-  }
-
-
-  /**
-   * ProjectsOnUsers delete
-   */
-  export type ProjectsOnUsersDeleteArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
-    /**
-     * Filter which ProjectsOnUsers to delete.
-     * 
-    **/
-    where: ProjectsOnUsersWhereUniqueInput
-  }
-
-
-  /**
-   * ProjectsOnUsers deleteMany
-   */
-  export type ProjectsOnUsersDeleteManyArgs = {
-    /**
-     * Filter which ProjectsOnUsers to delete
-     * 
-    **/
-    where?: ProjectsOnUsersWhereInput
-  }
-
-
-  /**
-   * ProjectsOnUsers without action
-   */
-  export type ProjectsOnUsersArgs = {
-    /**
-     * Select specific fields to fetch from the ProjectsOnUsers
-     * 
-    **/
-    select?: ProjectsOnUsersSelect | null
-    /**
-     * Choose, which related nodes to fetch as well.
-     * 
-    **/
-    include?: ProjectsOnUsersInclude | null
   }
 
 
@@ -3637,10 +2503,9 @@ export namespace Prisma {
     id: 'id',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt',
-    email: 'email',
-    password: 'password',
     firstname: 'firstname',
-    lastname: 'lastname'
+    lastname: 'lastname',
+    email: 'email'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
@@ -3656,16 +2521,6 @@ export namespace Prisma {
   };
 
   export type ProjectScalarFieldEnum = (typeof ProjectScalarFieldEnum)[keyof typeof ProjectScalarFieldEnum]
-
-
-  export const ProjectsOnUsersScalarFieldEnum: {
-    userId: 'userId',
-    projectId: 'projectId',
-    assignedAt: 'assignedAt',
-    assignedBy: 'assignedBy'
-  };
-
-  export type ProjectsOnUsersScalarFieldEnum = (typeof ProjectsOnUsersScalarFieldEnum)[keyof typeof ProjectsOnUsersScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3688,22 +2543,18 @@ export namespace Prisma {
     id?: IntFilter | number
     createdAt?: DateTimeFilter | Date | string
     updatedAt?: DateTimeFilter | Date | string
-    email?: StringFilter | string
-    password?: StringFilter | string
     firstname?: StringFilter | string
     lastname?: StringFilter | string
-    project?: ProjectsOnUsersListRelationFilter
+    email?: StringFilter | string
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     firstname?: SortOrder
     lastname?: SortOrder
-    project?: ProjectsOnUsersOrderByRelationAggregateInput
+    email?: SortOrder
   }
 
   export type UserWhereUniqueInput = {
@@ -3715,10 +2566,9 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     firstname?: SortOrder
     lastname?: SortOrder
+    email?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3733,10 +2583,9 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter | number
     createdAt?: DateTimeWithAggregatesFilter | Date | string
     updatedAt?: DateTimeWithAggregatesFilter | Date | string
-    email?: StringWithAggregatesFilter | string
-    password?: StringWithAggregatesFilter | string
     firstname?: StringWithAggregatesFilter | string
     lastname?: StringWithAggregatesFilter | string
+    email?: StringWithAggregatesFilter | string
   }
 
   export type ProjectWhereInput = {
@@ -3749,7 +2598,6 @@ export namespace Prisma {
     projectName?: StringFilter | string
     description?: StringFilter | string
     financement?: StringFilter | string
-    author?: ProjectsOnUsersListRelationFilter
   }
 
   export type ProjectOrderByWithRelationInput = {
@@ -3759,7 +2607,6 @@ export namespace Prisma {
     projectName?: SortOrder
     description?: SortOrder
     financement?: SortOrder
-    author?: ProjectsOnUsersOrderByRelationAggregateInput
   }
 
   export type ProjectWhereUniqueInput = {
@@ -3792,122 +2639,64 @@ export namespace Prisma {
     financement?: StringWithAggregatesFilter | string
   }
 
-  export type ProjectsOnUsersWhereInput = {
-    AND?: Enumerable<ProjectsOnUsersWhereInput>
-    OR?: Enumerable<ProjectsOnUsersWhereInput>
-    NOT?: Enumerable<ProjectsOnUsersWhereInput>
-    user?: XOR<UserRelationFilter, UserWhereInput>
-    userId?: IntFilter | number
-    project?: XOR<ProjectRelationFilter, ProjectWhereInput>
-    projectId?: IntFilter | number
-    assignedAt?: DateTimeFilter | Date | string
-    assignedBy?: StringFilter | string
-  }
-
-  export type ProjectsOnUsersOrderByWithRelationInput = {
-    user?: UserOrderByWithRelationInput
-    userId?: SortOrder
-    project?: ProjectOrderByWithRelationInput
-    projectId?: SortOrder
-    assignedAt?: SortOrder
-    assignedBy?: SortOrder
-  }
-
-  export type ProjectsOnUsersWhereUniqueInput = {
-    userId_projectId?: ProjectsOnUsersUserIdProjectIdCompoundUniqueInput
-  }
-
-  export type ProjectsOnUsersOrderByWithAggregationInput = {
-    userId?: SortOrder
-    projectId?: SortOrder
-    assignedAt?: SortOrder
-    assignedBy?: SortOrder
-    _count?: ProjectsOnUsersCountOrderByAggregateInput
-    _avg?: ProjectsOnUsersAvgOrderByAggregateInput
-    _max?: ProjectsOnUsersMaxOrderByAggregateInput
-    _min?: ProjectsOnUsersMinOrderByAggregateInput
-    _sum?: ProjectsOnUsersSumOrderByAggregateInput
-  }
-
-  export type ProjectsOnUsersScalarWhereWithAggregatesInput = {
-    AND?: Enumerable<ProjectsOnUsersScalarWhereWithAggregatesInput>
-    OR?: Enumerable<ProjectsOnUsersScalarWhereWithAggregatesInput>
-    NOT?: Enumerable<ProjectsOnUsersScalarWhereWithAggregatesInput>
-    userId?: IntWithAggregatesFilter | number
-    projectId?: IntWithAggregatesFilter | number
-    assignedAt?: DateTimeWithAggregatesFilter | Date | string
-    assignedBy?: StringWithAggregatesFilter | string
-  }
-
   export type UserCreateInput = {
     createdAt?: Date | string
     updatedAt?: Date | string
-    email: string
-    password: string
     firstname: string
     lastname: string
-    project?: ProjectsOnUsersCreateNestedManyWithoutUserInput
+    email: string
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    email: string
-    password: string
     firstname: string
     lastname: string
-    project?: ProjectsOnUsersUncheckedCreateNestedManyWithoutUserInput
+    email: string
   }
 
   export type UserUpdateInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
-    project?: ProjectsOnUsersUpdateManyWithoutUserInput
+    email?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
-    project?: ProjectsOnUsersUncheckedUpdateManyWithoutUserInput
+    email?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserCreateManyInput = {
     id?: number
     createdAt?: Date | string
     updatedAt?: Date | string
-    email: string
-    password: string
     firstname: string
     lastname: string
+    email: string
   }
 
   export type UserUpdateManyMutationInput = {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
     firstname?: StringFieldUpdateOperationsInput | string
     lastname?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
   }
 
   export type ProjectCreateInput = {
@@ -3916,7 +2705,6 @@ export namespace Prisma {
     projectName: string
     description: string
     financement: string
-    author?: ProjectsOnUsersCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUncheckedCreateInput = {
@@ -3926,7 +2714,6 @@ export namespace Prisma {
     projectName: string
     description: string
     financement: string
-    author?: ProjectsOnUsersUncheckedCreateNestedManyWithoutProjectInput
   }
 
   export type ProjectUpdateInput = {
@@ -3935,7 +2722,6 @@ export namespace Prisma {
     projectName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     financement?: StringFieldUpdateOperationsInput | string
-    author?: ProjectsOnUsersUpdateManyWithoutProjectInput
   }
 
   export type ProjectUncheckedUpdateInput = {
@@ -3945,7 +2731,6 @@ export namespace Prisma {
     projectName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     financement?: StringFieldUpdateOperationsInput | string
-    author?: ProjectsOnUsersUncheckedUpdateManyWithoutProjectInput
   }
 
   export type ProjectCreateManyInput = {
@@ -3972,53 +2757,6 @@ export namespace Prisma {
     projectName?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
     financement?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersCreateInput = {
-    user: UserCreateNestedOneWithoutProjectInput
-    project: ProjectCreateNestedOneWithoutAuthorInput
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersUncheckedCreateInput = {
-    userId: number
-    projectId: number
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersUpdateInput = {
-    user?: UserUpdateOneRequiredWithoutProjectInput
-    project?: ProjectUpdateOneRequiredWithoutAuthorInput
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersUncheckedUpdateInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    projectId?: IntFieldUpdateOperationsInput | number
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersCreateManyInput = {
-    userId: number
-    projectId: number
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersUpdateManyMutationInput = {
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersUncheckedUpdateManyInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    projectId?: IntFieldUpdateOperationsInput | number
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter = {
@@ -4057,24 +2795,13 @@ export namespace Prisma {
     not?: NestedStringFilter | string
   }
 
-  export type ProjectsOnUsersListRelationFilter = {
-    every?: ProjectsOnUsersWhereInput
-    some?: ProjectsOnUsersWhereInput
-    none?: ProjectsOnUsersWhereInput
-  }
-
-  export type ProjectsOnUsersOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     firstname?: SortOrder
     lastname?: SortOrder
+    email?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4085,20 +2812,18 @@ export namespace Prisma {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     firstname?: SortOrder
     lastname?: SortOrder
+    email?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-    email?: SortOrder
-    password?: SortOrder
     firstname?: SortOrder
     lastname?: SortOrder
+    email?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4187,66 +2912,6 @@ export namespace Prisma {
     id?: SortOrder
   }
 
-  export type UserRelationFilter = {
-    is?: UserWhereInput
-    isNot?: UserWhereInput
-  }
-
-  export type ProjectRelationFilter = {
-    is?: ProjectWhereInput
-    isNot?: ProjectWhereInput
-  }
-
-  export type ProjectsOnUsersUserIdProjectIdCompoundUniqueInput = {
-    userId: number
-    projectId: number
-  }
-
-  export type ProjectsOnUsersCountOrderByAggregateInput = {
-    userId?: SortOrder
-    projectId?: SortOrder
-    assignedAt?: SortOrder
-    assignedBy?: SortOrder
-  }
-
-  export type ProjectsOnUsersAvgOrderByAggregateInput = {
-    userId?: SortOrder
-    projectId?: SortOrder
-  }
-
-  export type ProjectsOnUsersMaxOrderByAggregateInput = {
-    userId?: SortOrder
-    projectId?: SortOrder
-    assignedAt?: SortOrder
-    assignedBy?: SortOrder
-  }
-
-  export type ProjectsOnUsersMinOrderByAggregateInput = {
-    userId?: SortOrder
-    projectId?: SortOrder
-    assignedAt?: SortOrder
-    assignedBy?: SortOrder
-  }
-
-  export type ProjectsOnUsersSumOrderByAggregateInput = {
-    userId?: SortOrder
-    projectId?: SortOrder
-  }
-
-  export type ProjectsOnUsersCreateNestedManyWithoutUserInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutUserInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutUserInput>
-    createMany?: ProjectsOnUsersCreateManyUserInputEnvelope
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-  }
-
-  export type ProjectsOnUsersUncheckedCreateNestedManyWithoutUserInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutUserInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutUserInput>
-    createMany?: ProjectsOnUsersCreateManyUserInputEnvelope
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-  }
-
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -4255,110 +2920,12 @@ export namespace Prisma {
     set?: string
   }
 
-  export type ProjectsOnUsersUpdateManyWithoutUserInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutUserInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutUserInput>
-    upsert?: Enumerable<ProjectsOnUsersUpsertWithWhereUniqueWithoutUserInput>
-    createMany?: ProjectsOnUsersCreateManyUserInputEnvelope
-    set?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    disconnect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    delete?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    update?: Enumerable<ProjectsOnUsersUpdateWithWhereUniqueWithoutUserInput>
-    updateMany?: Enumerable<ProjectsOnUsersUpdateManyWithWhereWithoutUserInput>
-    deleteMany?: Enumerable<ProjectsOnUsersScalarWhereInput>
-  }
-
   export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
     multiply?: number
     divide?: number
-  }
-
-  export type ProjectsOnUsersUncheckedUpdateManyWithoutUserInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutUserInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutUserInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutUserInput>
-    upsert?: Enumerable<ProjectsOnUsersUpsertWithWhereUniqueWithoutUserInput>
-    createMany?: ProjectsOnUsersCreateManyUserInputEnvelope
-    set?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    disconnect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    delete?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    update?: Enumerable<ProjectsOnUsersUpdateWithWhereUniqueWithoutUserInput>
-    updateMany?: Enumerable<ProjectsOnUsersUpdateManyWithWhereWithoutUserInput>
-    deleteMany?: Enumerable<ProjectsOnUsersScalarWhereInput>
-  }
-
-  export type ProjectsOnUsersCreateNestedManyWithoutProjectInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutProjectInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutProjectInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutProjectInput>
-    createMany?: ProjectsOnUsersCreateManyProjectInputEnvelope
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-  }
-
-  export type ProjectsOnUsersUncheckedCreateNestedManyWithoutProjectInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutProjectInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutProjectInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutProjectInput>
-    createMany?: ProjectsOnUsersCreateManyProjectInputEnvelope
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-  }
-
-  export type ProjectsOnUsersUpdateManyWithoutProjectInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutProjectInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutProjectInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutProjectInput>
-    upsert?: Enumerable<ProjectsOnUsersUpsertWithWhereUniqueWithoutProjectInput>
-    createMany?: ProjectsOnUsersCreateManyProjectInputEnvelope
-    set?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    disconnect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    delete?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    update?: Enumerable<ProjectsOnUsersUpdateWithWhereUniqueWithoutProjectInput>
-    updateMany?: Enumerable<ProjectsOnUsersUpdateManyWithWhereWithoutProjectInput>
-    deleteMany?: Enumerable<ProjectsOnUsersScalarWhereInput>
-  }
-
-  export type ProjectsOnUsersUncheckedUpdateManyWithoutProjectInput = {
-    create?: XOR<Enumerable<ProjectsOnUsersCreateWithoutProjectInput>, Enumerable<ProjectsOnUsersUncheckedCreateWithoutProjectInput>>
-    connectOrCreate?: Enumerable<ProjectsOnUsersCreateOrConnectWithoutProjectInput>
-    upsert?: Enumerable<ProjectsOnUsersUpsertWithWhereUniqueWithoutProjectInput>
-    createMany?: ProjectsOnUsersCreateManyProjectInputEnvelope
-    set?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    disconnect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    delete?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    connect?: Enumerable<ProjectsOnUsersWhereUniqueInput>
-    update?: Enumerable<ProjectsOnUsersUpdateWithWhereUniqueWithoutProjectInput>
-    updateMany?: Enumerable<ProjectsOnUsersUpdateManyWithWhereWithoutProjectInput>
-    deleteMany?: Enumerable<ProjectsOnUsersScalarWhereInput>
-  }
-
-  export type UserCreateNestedOneWithoutProjectInput = {
-    create?: XOR<UserCreateWithoutProjectInput, UserUncheckedCreateWithoutProjectInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProjectInput
-    connect?: UserWhereUniqueInput
-  }
-
-  export type ProjectCreateNestedOneWithoutAuthorInput = {
-    create?: XOR<ProjectCreateWithoutAuthorInput, ProjectUncheckedCreateWithoutAuthorInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutAuthorInput
-    connect?: ProjectWhereUniqueInput
-  }
-
-  export type UserUpdateOneRequiredWithoutProjectInput = {
-    create?: XOR<UserCreateWithoutProjectInput, UserUncheckedCreateWithoutProjectInput>
-    connectOrCreate?: UserCreateOrConnectWithoutProjectInput
-    upsert?: UserUpsertWithoutProjectInput
-    connect?: UserWhereUniqueInput
-    update?: XOR<UserUpdateWithoutProjectInput, UserUncheckedUpdateWithoutProjectInput>
-  }
-
-  export type ProjectUpdateOneRequiredWithoutAuthorInput = {
-    create?: XOR<ProjectCreateWithoutAuthorInput, ProjectUncheckedCreateWithoutAuthorInput>
-    connectOrCreate?: ProjectCreateOrConnectWithoutAuthorInput
-    upsert?: ProjectUpsertWithoutAuthorInput
-    connect?: ProjectWhereUniqueInput
-    update?: XOR<ProjectUpdateWithoutAuthorInput, ProjectUncheckedUpdateWithoutAuthorInput>
   }
 
   export type NestedIntFilter = {
@@ -4453,226 +3020,6 @@ export namespace Prisma {
     _count?: NestedIntFilter
     _min?: NestedStringFilter
     _max?: NestedStringFilter
-  }
-
-  export type ProjectsOnUsersCreateWithoutUserInput = {
-    project: ProjectCreateNestedOneWithoutAuthorInput
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersUncheckedCreateWithoutUserInput = {
-    projectId: number
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersCreateOrConnectWithoutUserInput = {
-    where: ProjectsOnUsersWhereUniqueInput
-    create: XOR<ProjectsOnUsersCreateWithoutUserInput, ProjectsOnUsersUncheckedCreateWithoutUserInput>
-  }
-
-  export type ProjectsOnUsersCreateManyUserInputEnvelope = {
-    data: Enumerable<ProjectsOnUsersCreateManyUserInput>
-    skipDuplicates?: boolean
-  }
-
-  export type ProjectsOnUsersUpsertWithWhereUniqueWithoutUserInput = {
-    where: ProjectsOnUsersWhereUniqueInput
-    update: XOR<ProjectsOnUsersUpdateWithoutUserInput, ProjectsOnUsersUncheckedUpdateWithoutUserInput>
-    create: XOR<ProjectsOnUsersCreateWithoutUserInput, ProjectsOnUsersUncheckedCreateWithoutUserInput>
-  }
-
-  export type ProjectsOnUsersUpdateWithWhereUniqueWithoutUserInput = {
-    where: ProjectsOnUsersWhereUniqueInput
-    data: XOR<ProjectsOnUsersUpdateWithoutUserInput, ProjectsOnUsersUncheckedUpdateWithoutUserInput>
-  }
-
-  export type ProjectsOnUsersUpdateManyWithWhereWithoutUserInput = {
-    where: ProjectsOnUsersScalarWhereInput
-    data: XOR<ProjectsOnUsersUpdateManyMutationInput, ProjectsOnUsersUncheckedUpdateManyWithoutProjectInput>
-  }
-
-  export type ProjectsOnUsersScalarWhereInput = {
-    AND?: Enumerable<ProjectsOnUsersScalarWhereInput>
-    OR?: Enumerable<ProjectsOnUsersScalarWhereInput>
-    NOT?: Enumerable<ProjectsOnUsersScalarWhereInput>
-    userId?: IntFilter | number
-    projectId?: IntFilter | number
-    assignedAt?: DateTimeFilter | Date | string
-    assignedBy?: StringFilter | string
-  }
-
-  export type ProjectsOnUsersCreateWithoutProjectInput = {
-    user: UserCreateNestedOneWithoutProjectInput
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersUncheckedCreateWithoutProjectInput = {
-    userId: number
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersCreateOrConnectWithoutProjectInput = {
-    where: ProjectsOnUsersWhereUniqueInput
-    create: XOR<ProjectsOnUsersCreateWithoutProjectInput, ProjectsOnUsersUncheckedCreateWithoutProjectInput>
-  }
-
-  export type ProjectsOnUsersCreateManyProjectInputEnvelope = {
-    data: Enumerable<ProjectsOnUsersCreateManyProjectInput>
-    skipDuplicates?: boolean
-  }
-
-  export type ProjectsOnUsersUpsertWithWhereUniqueWithoutProjectInput = {
-    where: ProjectsOnUsersWhereUniqueInput
-    update: XOR<ProjectsOnUsersUpdateWithoutProjectInput, ProjectsOnUsersUncheckedUpdateWithoutProjectInput>
-    create: XOR<ProjectsOnUsersCreateWithoutProjectInput, ProjectsOnUsersUncheckedCreateWithoutProjectInput>
-  }
-
-  export type ProjectsOnUsersUpdateWithWhereUniqueWithoutProjectInput = {
-    where: ProjectsOnUsersWhereUniqueInput
-    data: XOR<ProjectsOnUsersUpdateWithoutProjectInput, ProjectsOnUsersUncheckedUpdateWithoutProjectInput>
-  }
-
-  export type ProjectsOnUsersUpdateManyWithWhereWithoutProjectInput = {
-    where: ProjectsOnUsersScalarWhereInput
-    data: XOR<ProjectsOnUsersUpdateManyMutationInput, ProjectsOnUsersUncheckedUpdateManyWithoutAuthorInput>
-  }
-
-  export type UserCreateWithoutProjectInput = {
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    email: string
-    password: string
-    firstname: string
-    lastname: string
-  }
-
-  export type UserUncheckedCreateWithoutProjectInput = {
-    id?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    email: string
-    password: string
-    firstname: string
-    lastname: string
-  }
-
-  export type UserCreateOrConnectWithoutProjectInput = {
-    where: UserWhereUniqueInput
-    create: XOR<UserCreateWithoutProjectInput, UserUncheckedCreateWithoutProjectInput>
-  }
-
-  export type ProjectCreateWithoutAuthorInput = {
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    projectName: string
-    description: string
-    financement: string
-  }
-
-  export type ProjectUncheckedCreateWithoutAuthorInput = {
-    id?: number
-    createdAt?: Date | string
-    updatedAt?: Date | string
-    projectName: string
-    description: string
-    financement: string
-  }
-
-  export type ProjectCreateOrConnectWithoutAuthorInput = {
-    where: ProjectWhereUniqueInput
-    create: XOR<ProjectCreateWithoutAuthorInput, ProjectUncheckedCreateWithoutAuthorInput>
-  }
-
-  export type UserUpsertWithoutProjectInput = {
-    update: XOR<UserUpdateWithoutProjectInput, UserUncheckedUpdateWithoutProjectInput>
-    create: XOR<UserCreateWithoutProjectInput, UserUncheckedCreateWithoutProjectInput>
-  }
-
-  export type UserUpdateWithoutProjectInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    firstname?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type UserUncheckedUpdateWithoutProjectInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    email?: StringFieldUpdateOperationsInput | string
-    password?: StringFieldUpdateOperationsInput | string
-    firstname?: StringFieldUpdateOperationsInput | string
-    lastname?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectUpsertWithoutAuthorInput = {
-    update: XOR<ProjectUpdateWithoutAuthorInput, ProjectUncheckedUpdateWithoutAuthorInput>
-    create: XOR<ProjectCreateWithoutAuthorInput, ProjectUncheckedCreateWithoutAuthorInput>
-  }
-
-  export type ProjectUpdateWithoutAuthorInput = {
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    projectName?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    financement?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectUncheckedUpdateWithoutAuthorInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    projectName?: StringFieldUpdateOperationsInput | string
-    description?: StringFieldUpdateOperationsInput | string
-    financement?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersCreateManyUserInput = {
-    projectId: number
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersUpdateWithoutUserInput = {
-    project?: ProjectUpdateOneRequiredWithoutAuthorInput
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersUncheckedUpdateWithoutUserInput = {
-    projectId?: IntFieldUpdateOperationsInput | number
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersCreateManyProjectInput = {
-    userId: number
-    assignedAt?: Date | string
-    assignedBy: string
-  }
-
-  export type ProjectsOnUsersUpdateWithoutProjectInput = {
-    user?: UserUpdateOneRequiredWithoutProjectInput
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersUncheckedUpdateWithoutProjectInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type ProjectsOnUsersUncheckedUpdateManyWithoutAuthorInput = {
-    userId?: IntFieldUpdateOperationsInput | number
-    assignedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    assignedBy?: StringFieldUpdateOperationsInput | string
   }
 
 

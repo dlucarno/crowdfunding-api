@@ -15,9 +15,9 @@ export class AuthService implements OnModuleInit {
     async validateUser(email: string, password: string) {
         const user = await this.usersService.getUserByEmail(email)
 
-        if (!user || user.password != password) {
-            return false
-        }
+        // if (!user || user.password != password) {
+        //     return false
+        // }
         return user
     }
     async login(user: any) {
